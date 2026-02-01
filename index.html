@@ -1,221 +1,346 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Turtini</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turtini • GitHub Index</title>
   <meta name="description" content="Public-facing resources, documentation, and open-source artifacts from Turtini." />
+
   <style>
     :root{
-      --bg:#0b1020;
-      --panel:#111a33;
-      --text:#e9eefc;
-      --muted:#a9b5d6;
-      --border:rgba(255,255,255,.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:16px;
-      --max:1100px;
-      --link:#7aa7ff;
+      --bg0:#050913;
+      --bg1:#0a1630;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.04);
+      --stroke: rgba(255,255,255,0.10);
+      --stroke2: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted2: rgba(255,255,255,0.55);
+      --accent: #7db8ff;
+      --accent2:#a7e7ff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --radius2: 22px;
+      --max: 980px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(122,167,255,.25), transparent 60%),
-        radial-gradient(1000px 600px at 90% 0%, rgba(255,255,255,.08), transparent 55%),
-        var(--bg);
       color:var(--text);
-      line-height:1.5;
-    }
-    a{color:var(--link); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:48px 18px 72px}
-
-    header{
-      display:flex; gap:16px; align-items:center;
-      padding:18px; border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(125,184,255,0.25), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(167,231,255,0.18), transparent 60%),
+        radial-gradient(900px 700px at 50% 100%, rgba(92,132,255,0.10), transparent 65%),
+        linear-gradient(180deg, var(--bg1), var(--bg0) 55%);
+      line-height: 1.35;
     }
 
-    /* Wider to fit a horizontal wordmark */
-    .logo{
-      width:56px; height:56px; border-radius:14px;
-      background: rgba(255,255,255,.06);
-      display:grid; place-items:center;
-      overflow:hidden; border:1px solid var(--border);
-      flex:0 0 auto;
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 56px 18px 44px;
     }
-    .logo img{width:100%; height:100%; object-fit:contain; padding:6px}
 
-    .title h1{margin:0; font-size:28px; letter-spacing:.2px}
-    .title p{margin:6px 0 0; color:var(--muted); max-width:72ch}
-    .small{margin-top:6px; font-size:13px; color:var(--muted)}
+    .top-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.05));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 22px 22px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 18px;
+      backdrop-filter: blur(10px);
+    }
 
-    .actions{margin-left:auto; display:flex; gap:10px; flex-wrap:wrap}
+    .brand{
+      display:flex;
+      align-items:flex-start;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    /* ✅ Badge container */
+    .logo-badge{
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px; /* gives breathing room */
+      flex: 0 0 auto;
+    }
+
+    /* ✅ Image always fully visible */
+    .logo-badge img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* KEY: show full turtle */
+      display:block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
+    }
+
+    h1{
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: 0.2px;
+    }
+
+    .lede{
+      margin: 8px 0 6px;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .sublede{
+      margin: 6px 0 0;
+      color: var(--muted2);
+      font-size: 13px;
+      max-width: 70ch;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 12px; border-radius:12px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      color:var(--text); font-weight:600; font-size:14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 600;
+      color: var(--text);
+      font-size: 13px;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      text-decoration:none;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .btn:hover{
+      background: rgba(255,255,255,0.09);
       text-decoration:none;
     }
-    .btn:hover{background: rgba(255,255,255,.08); text-decoration:none}
 
     .section{
-      margin-top:26px;
-      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      margin-top: 26px;
     }
-    .section h2{margin:0; font-size:18px}
-    .section p{margin:6px 0 0; color:var(--muted); max-width:80ch}
+
+    .section h2{
+      margin: 0 0 6px;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+    }
+
+    .section p{
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
 
     .grid{
-      margin-top:14px;
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
-    .card{
-      grid-column: span 6;
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow:var(--shadow);
-      padding:16px;
-      display:flex; flex-direction:column; gap:10px;
-      min-height:150px;
-      transition: transform .12s ease, background .12s ease;
+
+    .repo{
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.035));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.22);
+      backdrop-filter: blur(10px);
+      min-height: 154px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
-    .card:hover{
-      transform: translateY(-1px);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+
+    .repo h3{
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: 0.2px;
     }
-    .card h3{margin:0; font-size:16px}
-    .card p{margin:0; color:var(--muted)}
-    .meta{
-      margin-top:auto;
-      display:flex; gap:10px; flex-wrap:wrap;
-      padding-top:10px;
+
+    .repo p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
     }
-    .tag{
-      font-size:12px; padding:6px 8px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      color:var(--muted);
-      background: rgba(0,0,0,.15);
-      white-space:nowrap;
+
+    .chips{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
     }
-    .linkrow{display:flex; gap:10px; flex-wrap:wrap; padding-top:6px}
+
+    .chip{
+      font-size: 12px;
+      color: rgba(255,255,255,0.72);
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    .repo a.repo-link{
+      margin-top: 12px;
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration:none;
+    }
+    .repo a.repo-link:hover{
+      text-decoration:underline;
+    }
 
     footer{
-      margin-top:26px;
-      color:var(--muted);
-      font-size:13px;
-      opacity:.95;
-      border-top:1px solid rgba(255,255,255,.08);
-      padding-top:16px;
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: var(--muted2);
+      font-size: 12px;
     }
-    @media (max-width: 860px){
-      header{flex-wrap:wrap}
-      .actions{margin-left:0}
-      .card{grid-column: span 12}
-      .logo{width:140px}
+
+    /* ✅ Mobile refinements */
+    @media (max-width: 760px){
+      .wrap{ padding-top: 28px; }
+      .top-card{
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .actions{
+        padding-top: 8px;
+      }
+      .grid{
+        grid-template-columns: 1fr;
+      }
+      h1{ font-size: 30px; }
+    }
+
+    /* ✅ Extra-small mobile: ensure badge never crops */
+    @media (max-width: 420px){
+      .logo-badge{
+        width: 84px;   /* slightly bigger */
+        height: 84px;  /* and square */
+        border-radius: 18px;
+        padding: 12px; /* more breathing room */
+      }
+      .lede{ font-size: 14px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo" aria-label="Turtini logo">
-        <!-- Cache-safe logo URL: bump v=2 when you update the logo file -->
-        <img src="assets/logo.png?v=2" alt="Turtini logo" />
-      </div>
-
-      <div class="title">
-        <h1>Turtini</h1>
-        <p>Public-facing resources, documentation, and open-source artifacts focused on automation, governance, and operational clarity in complex environments.</p>
-        <div class="small">This page is intentionally lightweight: a calm index to work that lives in individual repositories.</div>
-      </div>
-
-      <div class="actions">
-        <a class="btn" href="https://github.com/Turtini">GitHub Org</a>
-        <a class="btn" href="https://turtini.com">Website</a>
-      </div>
-    </header>
-
-    <div class="section">
-      <div>
-        <h2>Featured repositories</h2>
-        <p>High-signal starting points. Additional work lives in the organization index.</p>
-      </div>
-    </div>
-
-    <div class="grid">
-      <!-- AI Delegation Framework -->
-      <div class="card">
-        <h3>AI Delegation Framework</h3>
-        <p>Governance framework describing how Turtini oversees and delegates the use of AI systems in human-led operations.</p>
-        <div class="meta">
-          <span class="tag">governance</span>
-          <span class="tag">ai</span>
-          <span class="tag">public sector friendly</span>
+  <main class="wrap">
+    <section class="top-card" aria-label="Turtini overview">
+      <div class="brand">
+        <div class="logo-badge" aria-hidden="true">
+          <!-- Cache busting helps GitHub Pages/CDN update faster -->
+          <img src="assets/logo.png?v=3" alt="Turtini logo" />
         </div>
-        <div class="linkrow">
-          <a href="https://github.com/Turtini/ai">Repository →</a>
+
+        <div style="min-width:0;">
+          <h1>Turtini</h1>
+          <p class="lede">
+            Public-facing resources, documentation, and open-source artifacts focused on automation,
+            governance, and operational clarity in complex environments.
+          </p>
+          <p class="sublede">
+            This page is intentionally lightweight: a calm index to work that lives in individual repositories.
+          </p>
         </div>
       </div>
 
-      <!-- Labs -->
-      <div class="card">
-        <h3>Labs</h3>
-        <p>Practical lab environments and experiments used to validate tooling, patterns, and operator confidence.</p>
-        <div class="meta">
-          <span class="tag">labs</span>
-          <span class="tag">experimentation</span>
-          <span class="tag">learning</span>
-        </div>
-        <div class="linkrow">
-          <a href="https://github.com/Turtini/labs">Repository →</a>
-        </div>
+      <div class="actions" aria-label="Quick links">
+        <a class="btn" href="https://github.com/Turtini" target="_blank" rel="noopener">GitHub Org</a>
+        <a class="btn" href="https://turtini.com" target="_blank" rel="noopener">Website</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Featured repositories</h2>
+      <p>High-signal starting points. Additional work lives in the organization index.</p>
+
+      <div class="grid">
+        <article class="repo">
+          <div>
+            <h3>AI Delegation Framework</h3>
+            <p>Governance framework describing how Turtini oversees and delegates the use of AI systems in human-led operations.</p>
+            <div class="chips">
+              <span class="chip">governance</span>
+              <span class="chip">ai</span>
+              <span class="chip">public sector friendly</span>
+            </div>
+          </div>
+          <a class="repo-link" href="https://github.com/Turtini/ai" target="_blank" rel="noopener">Repository →</a>
+        </article>
+
+        <article class="repo">
+          <div>
+            <h3>Labs</h3>
+            <p>Practical lab environments and experiments used to validate tooling, patterns, and operator confidence.</p>
+            <div class="chips">
+              <span class="chip">labs</span>
+              <span class="chip">experimentation</span>
+              <span class="chip">learning</span>
+            </div>
+          </div>
+          <a class="repo-link" href="https://github.com/Turtini/labs" target="_blank" rel="noopener">Repository →</a>
+        </article>
+
+        <article class="repo">
+          <div>
+            <h3>OpenShift on AWS</h3>
+            <p>Reference implementation for deploying OpenShift on AWS using Ansible, focused on clarity and repeatability.</p>
+            <div class="chips">
+              <span class="chip">openshift</span>
+              <span class="chip">aws</span>
+              <span class="chip">ansible</span>
+            </div>
+          </div>
+          <a class="repo-link" href="https://github.com/Turtini/turtini_openshift_aws" target="_blank" rel="noopener">Repository →</a>
+        </article>
+
+        <article class="repo">
+          <div>
+            <h3>Roles</h3>
+            <p>Reusable Ansible roles published under a permissive license for infrastructure automation and operational consistency.</p>
+            <div class="chips">
+              <span class="chip">ansible</span>
+              <span class="chip">automation</span>
+              <span class="chip">open source</span>
+            </div>
+          </div>
+          <a class="repo-link" href="https://github.com/Turtini/roles" target="_blank" rel="noopener">Repository →</a>
+        </article>
       </div>
 
-      <!-- OpenShift on AWS -->
-      <div class="card">
-        <h3>OpenShift on AWS</h3>
-        <p>Reference implementation for deploying OpenShift on AWS using Ansible, focused on clarity and repeatability.</p>
-        <div class="meta">
-          <span class="tag">openshift</span>
-          <span class="tag">aws</span>
-          <span class="tag">ansible</span>
-        </div>
-        <div class="linkrow">
-          <a href="https://github.com/Turtini/turtini.openshift_aws">Repository →</a>
-        </div>
-      </div>
-
-      <!-- Roles -->
-      <div class="card">
-        <h3>Roles</h3>
-        <p>Reusable Ansible roles published under a permissive license for infrastructure automation and operational consistency.</p>
-        <div class="meta">
-          <span class="tag">ansible</span>
-          <span class="tag">automation</span>
-          <span class="tag">open source</span>
-        </div>
-        <div class="linkrow">
-          <a href="https://github.com/Turtini/roles">Repository →</a>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div><strong>Note:</strong> Most materials published by Turtini aim to reduce complexity rather than introduce it.</div>
-      <div style="margin-top:6px;">If something feels calm, clear, and slightly understated — that is intentional.</div>
-    </footer>
-  </div>
+      <footer>
+        <div><strong>Note:</strong> Most materials published by Turtini aim to reduce complexity rather than introduce it.</div>
+        <div style="margin-top:6px;">If something feels calm, clear, and slightly understated — that is intentional.</div>
+      </footer>
+    </section>
+  </main>
 </body>
 </html>
