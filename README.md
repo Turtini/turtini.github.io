@@ -1,5 +1,7 @@
 # Turtini
 
+🔗 **Canonical URL:** https://turtini.github.io
+
 **Turtini** is an independent technology partner focused on open source, automation, and operational clarity in complex environments.
 
 This site serves as a public index of Turtini’s open resources, frameworks, and community contributions. It is intended for engineers, operators, and partners looking for practical, reusable approaches rather than prescriptive tooling.
