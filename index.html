@@ -9,7 +9,6 @@
     :root{
       --bg:#0b1020;
       --panel:#111a33;
-      --panel2:#0f1730;
       --text:#e9eefc;
       --muted:#a9b5d6;
       --border:rgba(255,255,255,.10);
@@ -22,15 +21,17 @@
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 700px at 20% -10%, rgba(122,167,255,.25), transparent 60%),
-                  radial-gradient(1000px 600px at 90% 0%, rgba(255,255,255,.08), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(122,167,255,.25), transparent 60%),
+        radial-gradient(1000px 600px at 90% 0%, rgba(255,255,255,.08), transparent 55%),
+        var(--bg);
       color:var(--text);
       line-height:1.5;
     }
     a{color:var(--link); text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{max-width:var(--max); margin:0 auto; padding:48px 18px 72px}
+
     header{
       display:flex; gap:16px; align-items:center;
       padding:18px; border:1px solid var(--border);
@@ -38,16 +39,21 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
+
+    /* Wider to fit a horizontal wordmark */
     .logo{
-      width:56px; height:56px; border-radius:14px;
+      width:120px; height:56px; border-radius:14px;
       background: rgba(255,255,255,.06);
       display:grid; place-items:center;
       overflow:hidden; border:1px solid var(--border);
       flex:0 0 auto;
     }
-    .logo img{width:100%; height:100%; object-fit:cover}
+    .logo img{width:100%; height:100%; object-fit:contain; padding:8px}
+
     .title h1{margin:0; font-size:28px; letter-spacing:.2px}
-    .title p{margin:6px 0 0; color:var(--muted); max-width:70ch}
+    .title p{margin:6px 0 0; color:var(--muted); max-width:72ch}
+    .small{margin-top:6px; font-size:13px; color:var(--muted)}
+
     .actions{margin-left:auto; display:flex; gap:10px; flex-wrap:wrap}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -58,12 +64,14 @@
       text-decoration:none;
     }
     .btn:hover{background: rgba(255,255,255,.08); text-decoration:none}
+
     .section{
       margin-top:26px;
       display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
     }
     .section h2{margin:0; font-size:18px}
-    .section p{margin:6px 0 0; color:var(--muted)}
+    .section p{margin:6px 0 0; color:var(--muted); max-width:80ch}
+
     .grid{
       margin-top:14px;
       display:grid;
@@ -78,7 +86,12 @@
       box-shadow:var(--shadow);
       padding:16px;
       display:flex; flex-direction:column; gap:10px;
-      min-height:140px;
+      min-height:150px;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .card:hover{
+      transform: translateY(-1px);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
     }
     .card h3{margin:0; font-size:16px}
     .card p{margin:0; color:var(--muted)}
@@ -93,34 +106,41 @@
       border-radius:999px;
       color:var(--muted);
       background: rgba(0,0,0,.15);
+      white-space:nowrap;
     }
-    .linkrow{display:flex; gap:10px; flex-wrap:wrap}
-    .small{font-size:13px; color:var(--muted)}
+    .linkrow{display:flex; gap:10px; flex-wrap:wrap; padding-top:6px}
+
     footer{
-      margin-top:28px;
+      margin-top:26px;
       color:var(--muted);
       font-size:13px;
       opacity:.95;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:16px;
     }
     @media (max-width: 860px){
       header{flex-wrap:wrap}
       .actions{margin-left:0}
       .card{grid-column: span 12}
+      .logo{width:140px}
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
       <div class="logo" aria-label="Turtini logo">
-        <!-- Put your logo at /assets/logo.png (or .svg) -->
-        <img src="assets/logo.png" alt="Turtini logo" onerror="this.style.display='none'; this.parentElement.textContent='🐢';" />
+        <!-- Cache-safe logo URL: bump v=2 when you update the logo file -->
+        <img src="assets/logo.png?v=1" alt="Turtini logo" />
       </div>
+
       <div class="title">
         <h1>Turtini</h1>
-        <p>Public-facing resources, documentation, and open-source artifacts focused on automation, governance, and operational clarity.</p>
+        <p>Public-facing resources, documentation, and open-source artifacts focused on automation, governance, and operational clarity in complex environments.</p>
         <div class="small">This page is intentionally lightweight: a calm index to work that lives in individual repositories.</div>
       </div>
+
       <div class="actions">
         <a class="btn" href="https://github.com/Turtini">GitHub Org</a>
         <a class="btn" href="https://turtini.com">Website</a>
@@ -130,65 +150,71 @@
     <div class="section">
       <div>
         <h2>Featured repositories</h2>
-        <p>Curated starting points. Everything else lives in the organization index.</p>
+        <p>High-signal starting points. Additional work lives in the organization index.</p>
       </div>
     </div>
 
     <div class="grid">
-      <!-- Card 1 -->
+      <!-- AI Delegation Framework -->
       <div class="card">
         <h3>AI Delegation Framework</h3>
-        <p>Principles and practical guidance for delegating work to AI systems responsibly.</p>
+        <p>Governance framework describing how Turtini oversees and delegates the use of AI systems in human-led operations.</p>
         <div class="meta">
-          <span class="tag">governance</span><span class="tag">public sector friendly</span>
+          <span class="tag">governance</span>
+          <span class="tag">ai</span>
+          <span class="tag">public sector friendly</span>
         </div>
         <div class="linkrow">
           <a href="https://github.com/Turtini/ai">Repository →</a>
         </div>
       </div>
 
-      <!-- Card 2 -->
+      <!-- Labs -->
       <div class="card">
-        <h3>RHEL 9 STIG Ansible Role</h3>
-        <p>Automation patterns for security hardening and compliance-aligned configuration.</p>
+        <h3>Labs</h3>
+        <p>Practical lab environments and experiments used to validate tooling, patterns, and operator confidence.</p>
         <div class="meta">
-          <span class="tag">ansible</span><span class="tag">stig</span><span class="tag">rhel</span>
+          <span class="tag">labs</span>
+          <span class="tag">experimentation</span>
+          <span class="tag">learning</span>
         </div>
         <div class="linkrow">
-          <!-- update link to your actual repo name -->
-          <a href="https://github.com/Turtini">Organization repos →</a>
+          <a href="https://github.com/Turtini/labs">Repository →</a>
         </div>
       </div>
 
-      <!-- Card 3 -->
+      <!-- OpenShift on AWS -->
       <div class="card">
-        <h3>Exam / Training Resources</h3>
-        <p>Practical study artifacts and lab patterns built for real-world operator confidence.</p>
+        <h3>OpenShift on AWS</h3>
+        <p>Reference implementation for deploying OpenShift on AWS using Ansible, focused on clarity and repeatability.</p>
         <div class="meta">
-          <span class="tag">training</span><span class="tag">operations</span>
+          <span class="tag">openshift</span>
+          <span class="tag">aws</span>
+          <span class="tag">ansible</span>
         </div>
         <div class="linkrow">
-          <!-- update link -->
-          <a href="https://github.com/Turtini">Organization repos →</a>
+          <a href="https://github.com/Turtini/turtini.openshift_aws">Repository →</a>
         </div>
       </div>
 
-      <!-- Card 4 -->
+      <!-- Roles -->
       <div class="card">
-        <h3>Relationship Infrastructure</h3>
-        <p>Concepts for turning documented work into reusable relationship capital over time.</p>
+        <h3>Roles</h3>
+        <p>Reusable Ansible roles published under a permissive license for infrastructure automation and operational consistency.</p>
         <div class="meta">
-          <span class="tag">systems</span><span class="tag">sales ops</span>
+          <span class="tag">ansible</span>
+          <span class="tag">automation</span>
+          <span class="tag">open source</span>
         </div>
         <div class="linkrow">
-          <!-- update link if/when you publish it -->
-          <a href="https://github.com/Turtini">Organization repos →</a>
+          <a href="https://github.com/Turtini/roles">Repository →</a>
         </div>
       </div>
     </div>
 
     <footer>
-      <div>Want something added here? Keep it small, stable, and high-signal.</div>
+      <div><strong>Note:</strong> Most materials published by Turtini aim to reduce complexity rather than introduce it.</div>
+      <div style="margin-top:6px;">If something feels calm, clear, and slightly understated — that is intentional.</div>
     </footer>
   </div>
 </body>
