@@ -243,6 +243,21 @@
         font-size: 14px;
       }
 
+      /* Category divider (spans full grid width) */
+      .categoryDivider {
+        grid-column: 1 / -1;
+        margin: 6px 0 2px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
+        color: var(--muted2);
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+
+        /* Optional: helps anchor jumps land nicely if you ever add a sticky header */
+        scroll-margin-top: 20px;
+      }
+
       .divider {
         margin-top: 26px;
         border-top: 1px solid rgba(255, 255, 255, 0.09);
@@ -316,6 +331,10 @@
           <p>High-signal starting points. Additional work lives in the organization index.</p>
 
           <div class="grid">
+            <div class="categoryDivider" id="governance">
+              <span>Governance & Public Sector Security</span>
+            </div>
+
             <article class="card">
               <h3 class="cardTitle">AI Delegation Framework</h3>
               <p class="cardBody">
@@ -362,10 +381,10 @@
                 Designed for security, audit, procurement, and GS conversations.
               </p>
               <div class="chips">
+                <span class="chip">public sector</span>
                 <span class="chip">fedramp</span>
                 <span class="chip">security</span>
                 <span class="chip">audit & compliance</span>
-                <span class="chip">public sector</span>
               </div>
               <a
                 class="cardLink"
@@ -376,6 +395,10 @@
                 Repository <span aria-hidden="true">→</span>
               </a>
             </article>
+
+            <div class="categoryDivider" id="tools">
+              <span>Practitioner Tools</span>
+            </div>
 
             <article class="card">
               <h3 class="cardTitle">Labs</h3>
@@ -391,6 +414,27 @@
                 Repository <span aria-hidden="true">→</span>
               </a>
             </article>
+
+            <article class="card">
+              <h3 class="cardTitle">CLI Cheat Sheets</h3>
+              <p class="cardBody">
+                Operator-first quick references for Linux fundamentals, OpenShift (<code>oc</code>), VI/VIM, and YAML.
+                Designed to be copy-friendly and usable under pressure.
+              </p>
+              <div class="chips">
+                <span class="chip">linux</span>
+                <span class="chip">openshift</span>
+                <span class="chip">operator</span>
+                <span class="chip">quick reference</span>
+              </div>
+              <a class="cardLink" href="https://github.com/Turtini/cli-cheat-sheets" target="_blank" rel="noopener noreferrer">
+                Repository <span aria-hidden="true">→</span>
+              </a>
+            </article>
+
+            <div class="categoryDivider" id="reference">
+              <span>Reference Implementations</span>
+            </div>
 
             <article class="card">
               <h3 class="cardTitle">OpenShift on AWS</h3>
@@ -421,24 +465,6 @@
                 Repository <span aria-hidden="true">→</span>
               </a>
             </article>
-
-            <article class="card">
-              <h3 class="cardTitle">CLI Cheat Sheets</h3>
-              <p class="cardBody">
-                Operator-first quick references for Linux fundamentals, OpenShift (<code>oc</code>), VI/VIM, and YAML.
-                Designed to be copy-friendly and usable under pressure.
-              </p>
-              <div class="chips">
-                <span class="chip">linux</span>
-                <span class="chip">openshift</span>
-                <span class="chip">operator</span>
-                <span class="chip">quick reference</span>
-              </div>
-              <a class="cardLink" href="https://github.com/Turtini/cli-cheat-sheets" target="_blank" rel="noopener noreferrer">
-               Repository <span aria-hidden="true">→</span>
-              </a>
-            </article>
-
           </div>
 
           <div class="divider"></div>
