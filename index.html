@@ -2,22 +2,22 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17622211300"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17622211300"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17622211300');
+    </script>
 
-  gtag('config', 'AW-17622211300');
-</script>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#0b1020" />
-    <!-- Favicon -->
+    <meta name="theme-color" content="#2a53cd" />
+
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
@@ -29,21 +29,21 @@
 
     <style>
       :root {
-        --bg0: #0b1020;
-        --bg1: #0b1020;
-        --card: rgba(255, 255, 255, 0.06);
-        --card2: rgba(255, 255, 255, 0.085);
-        --border: rgba(255, 255, 255, 0.10);
-        --text: rgba(255, 255, 255, 0.92);
-        --muted: rgba(255, 255, 255, 0.70);
-        --muted2: rgba(255, 255, 255, 0.55);
-        --link: #79a8ff;
-        --chip: rgba(255, 255, 255, 0.06);
-        --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-        --radius: 18px;
+        --nav: #2a53cd;
+        --nav-border: rgba(255, 255, 255, 0.10);
+        --bg0: #081a46;
+        --card: rgba(42, 83, 205, 0.88);
+        --card-hover: rgba(42, 83, 205, 0.94);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: rgba(255, 255, 255, 0.95);
+        --muted: rgba(255, 255, 255, 0.86);
+        --muted2: rgba(255, 255, 255, 0.72);
+        --link: #ffffff;
+        --chip: rgba(255, 255, 255, 0.10);
+        --shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+        --radius: 22px;
       }
 
-      /* Critical: prevent iOS white bands (html background shows during overscroll / safe areas) */
       html {
         height: 100%;
         background: var(--bg0);
@@ -52,178 +52,197 @@
       body {
         min-height: 100%;
         margin: 0;
-        background: var(--bg1);
+        background: var(--bg0);
         color: var(--text);
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
           Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
         line-height: 1.45;
-
-        /* Fill iOS safe areas with the same dark background */
         padding-top: env(safe-area-inset-top);
         padding-bottom: env(safe-area-inset-bottom);
         padding-left: env(safe-area-inset-left);
         padding-right: env(safe-area-inset-right);
       }
 
-      /* Page background */
+      a {
+        color: inherit;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--nav);
+        border-bottom: 1px solid var(--nav-border);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+      }
+
+      .topbar-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        min-height: 58px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .brand img {
+        height: 28px;
+        width: auto;
+        display: block;
+        object-fit: contain;
+      }
+
+      .navlinks {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        flex-wrap: wrap;
+      }
+
+      .navlinks a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.96);
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .navlinks a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
       .page {
-        min-height: 100vh;
+        min-height: calc(100vh - 58px);
         background:
-          radial-gradient(1200px 800px at 40% -10%, rgba(84, 164, 255, 0.35), transparent 60%),
-          radial-gradient(900px 600px at 75% 20%, rgba(67, 225, 196, 0.18), transparent 55%),
-          radial-gradient(900px 700px at 30% 110%, rgba(122, 86, 255, 0.20), transparent 60%),
-          linear-gradient(180deg, #0a1227 0%, #070c1a 55%, #060913 100%);
-        background-attachment: fixed;
-        padding: 44px 18px 64px;
+          linear-gradient(rgba(42, 83, 205, 0.12), rgba(42, 83, 205, 0.10)),
+          url("https://turtini.com/hubfs/Turtini%20background.jpg") center center / cover no-repeat;
+        padding: 28px 18px 64px;
         box-sizing: border-box;
       }
 
       .wrap {
-        max-width: 980px;
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
         margin: 0 auto;
       }
 
-      /* Top card */
       .hero {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 22px 22px;
-        border-radius: 22px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-
-      .heroRow {
-        display: grid;
-        grid-template-columns: 78px 1fr;
-        gap: 16px;
+        grid-template-columns: 92px 1fr;
+        gap: 22px;
         align-items: start;
+        margin: 6px 0 28px;
       }
 
       .badge {
-        width: 78px;
-        height: 78px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.10);
+        width: 92px;
+        height: 92px;
         display: grid;
         place-items: center;
-        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
-        overflow: hidden;
       }
 
       .badge img {
-        width: 52px;
-        height: 52px;
+        width: 76px;
+        height: 76px;
         object-fit: contain;
         display: block;
-        filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
       }
 
       h1 {
-        font-size: 34px;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        margin: 2px 0 8px;
+        font-size: 54px;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        margin: 4px 0 10px;
       }
 
       .sub {
-        color: var(--muted);
-        font-size: 15.5px;
-        margin: 0 0 10px;
-        max-width: 64ch;
+        color: var(--text);
+        font-size: 18px;
+        margin: 0 0 12px;
+        max-width: 950px;
       }
 
       .sub2 {
         color: var(--muted2);
-        font-size: 13px;
-        margin: 0;
-      }
-
-      .heroActions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: center;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 14px;
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 600;
         font-size: 14px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.22);
-        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+        margin: 0;
+        max-width: 760px;
       }
 
-      .btn:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.085);
-        border-color: rgba(255, 255, 255, 0.18);
-      }
-
-      /* Section */
       .section {
-        margin-top: 26px;
+        margin-top: 16px;
       }
 
       .section h2 {
         margin: 0 0 6px;
-        font-size: 18px;
-        letter-spacing: -0.01em;
+        font-size: 28px;
+        letter-spacing: -0.02em;
       }
 
       .section p {
-        margin: 0 0 16px;
+        margin: 0 0 18px;
         color: var(--muted);
+        font-size: 16px;
       }
 
-      /* Cards */
+      .section p a {
+        color: #f0dcff;
+      }
+
       .grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 18px;
+      }
+
+      .categoryDivider {
+        grid-column: 1 / -1;
+        margin: 8px 0 0;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
       }
 
       .card {
         border-radius: var(--radius);
         border: 1px solid var(--border);
-        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-        box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-        padding: 18px 18px 16px;
-        transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        padding: 20px 20px 18px;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
       }
 
       .card:hover {
-        transform: translateY(-1px);
-        border-color: rgba(255, 255, 255, 0.16);
-        background: linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.04));
+        transform: translateY(-2px);
+        background: var(--card-hover);
+        border-color: rgba(255, 255, 255, 0.18);
       }
 
       .cardTitle {
         margin: 0 0 8px;
-        font-size: 16.5px;
+        font-size: 18px;
         letter-spacing: -0.01em;
       }
 
       .cardBody {
         margin: 0 0 14px;
-        color: var(--muted);
-        font-size: 14px;
-        max-width: 70ch;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 15px;
+        max-width: 72ch;
       }
 
       .chips {
@@ -235,9 +254,9 @@
 
       .chip {
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.72);
+        color: rgba(255, 255, 255, 0.9);
         background: var(--chip);
-        border: 1px solid rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.14);
         border-radius: 999px;
         padding: 6px 10px;
       }
@@ -252,106 +271,128 @@
         font-size: 14px;
       }
 
-      /* Category divider (spans full grid width) */
-      .categoryDivider {
-        grid-column: 1 / -1;
-        margin: 6px 0 2px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.10);
-        color: var(--muted2);
-        font-size: 12.5px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-
-        /* Optional: helps anchor jumps land nicely if you ever add a sticky header */
-        scroll-margin-top: 20px;
+      .cardLink:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
       }
 
       .divider {
-        margin-top: 26px;
-        border-top: 1px solid rgba(255, 255, 255, 0.09);
+        margin-top: 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
       }
 
       .note {
         margin-top: 16px;
-        color: var(--muted2);
-        font-size: 12.5px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 13px;
         line-height: 1.55;
       }
 
-      /* Responsive */
       @media (min-width: 820px) {
-        .hero {
-          grid-template-columns: 1fr auto;
-          align-items: start;
-        }
-        .heroActions {
-          align-items: flex-start;
-          justify-content: flex-end;
-        }
         .grid {
           grid-template-columns: 1fr 1fr;
-          gap: 16px;
         }
       }
 
-      /* Reduce motion */
+      @media (max-width: 720px) {
+        .topbar-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          gap: 10px;
+        }
+
+        .navlinks {
+          gap: 14px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .badge {
+          width: 72px;
+          height: 72px;
+        }
+
+        .badge img {
+          width: 60px;
+          height: 60px;
+        }
+
+        h1 {
+          font-size: 38px;
+        }
+
+        .sub {
+          font-size: 16px;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
-        .btn, .card { transition: none; }
-        .btn:hover, .card:hover { transform: none; }
+        .card {
+          transition: none;
+        }
+
+        .card:hover {
+          transform: none;
+        }
       }
     </style>
   </head>
 
   <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="https://turtini.github.io/">
+          <img src="assets/turtini-white-inline-logo.png" alt="Turtini logo" />
+        </a>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a href="https://turtini.github.io/">Home</a>
+          <a href="https://github.com/Turtini" target="_blank" rel="noopener noreferrer">GitHub Org</a>
+          <a href="https://docs.turtini.com" target="_blank" rel="noopener noreferrer">Docs</a>
+          <a href="https://turtini.com" target="_blank" rel="noopener noreferrer">Website</a>
+          <a href="https://trident.turtini.com" target="_blank" rel="noopener noreferrer">Trident</a>
+          <a href="https://galaxy.ansible.com/ui/namespaces/turtini/" target="_blank" rel="noopener noreferrer">Ansible Galaxy</a>
+        </nav>
+      </div>
+    </header>
+
     <div class="page">
       <div class="wrap">
         <section class="hero">
-          <div class="heroRow">
-            <div class="badge" aria-hidden="true">
-              <!-- Use cache-buster if GitHub Pages is slow to refresh the image -->
-              <img src="assets/logo.png?v=3" alt="" />
-            </div>
-
-            <div>
-              <h1>Turtini</h1>
-              <p class="sub">
-                Public-facing resources, documentation, and open-source artifacts focused on
-                automation, governance, and operational clarity in complex environments.
-              </p>
-              <p class="sub2">
-                Turtini is a U.S.-based Red Hat reseller that works in regulated environments.
-
-                We publish practical, open-source materials for enterprise teams.
-              </p>
-            </div>
+          <div class="badge" aria-hidden="true">
+            <img src="assets/logo.png?v=3" alt="" />
           </div>
 
-          <div class="heroActions">
-            <a class="btn" href="https://github.com/Turtini" target="_blank" rel="noopener noreferrer">
-              GitHub Org
-            </a>
-             <a class="btn" href="https://docs.turtini.com" target="_blank" rel="noopener noreferrer">
-              Docs
-            </a>
-            <a class="btn" href="https://turtini.com" target="_blank" rel="noopener noreferrer">
-              Website
-            </a>
-            <a class="btn" href="https://galaxy.ansible.com/ui/namespaces/turtini/" target="_blank" rel="noopener noreferrer">
-              Ansible Galaxy
-            </a>
+          <div>
+            <h1>Turtini</h1>
+            <p class="sub">
+              Public-facing resources, documentation, and open-source artifacts focused on
+              automation, governance, and operational clarity in complex environments.
+            </p>
+            <p class="sub2">
+              Turtini is a U.S.-based Red Hat reseller that works in regulated environments.
+              We publish practical, open-source materials for enterprise teams.
+            </p>
           </div>
         </section>
 
         <section class="section">
           <h2>Featured repositories</h2>
-          <p>The repo cards below are great places to start. Additional repos can be found in our <a href="https://github.com/orgs/Turtini/repositories">GitHub Org repo index</a>.</p>
+          <p>
+            The repo cards below are great places to start. Additional repos can be found in our
+            <a href="https://github.com/orgs/Turtini/repositories" target="_blank" rel="noopener noreferrer">GitHub Org repo index</a>.
+          </p>
 
           <div class="grid">
             <div class="categoryDivider" id="governance">
-              <span>Governance & Public Sector Security</span>
+              <span>Governance &amp; Public Sector Security</span>
             </div>
-           
+
             <article class="card">
               <h3 class="cardTitle">Zero Trust</h3>
               <p class="cardBody">
@@ -364,12 +405,7 @@
                 <span class="chip">security</span>
                 <span class="chip">public sector</span>
               </div>
-              <a
-                class="cardLink"
-                href="https://github.com/Turtini/zero-trust"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a class="cardLink" href="https://github.com/Turtini/zero-trust" target="_blank" rel="noopener noreferrer">
                 Repository <span aria-hidden="true">→</span>
               </a>
             </article>
@@ -397,15 +433,10 @@
               <div class="chips">
                 <span class="chip">governance</span>
                 <span class="chip">github</span>
-                <span class="chip">audit & compliance</span>
+                <span class="chip">audit &amp; compliance</span>
                 <span class="chip">public sector</span>
               </div>
-              <a
-                class="cardLink"
-                href="https://github.com/Turtini/github-for-government"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a class="cardLink" href="https://github.com/Turtini/github-for-government" target="_blank" rel="noopener noreferrer">
                 Repository <span aria-hidden="true">→</span>
               </a>
             </article>
@@ -419,73 +450,16 @@
                 <span class="chip">public sector</span>
                 <span class="chip">fedramp</span>
                 <span class="chip">security</span>
-                <span class="chip">audit & compliance</span>
+                <span class="chip">audit &amp; compliance</span>
               </div>
-              <a
-                class="cardLink"
-                href="https://github.com/Turtini/public-sector-security"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a class="cardLink" href="https://github.com/Turtini/public-sector-security" target="_blank" rel="noopener noreferrer">
                 Repository <span aria-hidden="true">→</span>
               </a>
             </article>
 
-            <div class="categoryDivider" id="tools">
+            <div class="categoryDivider" id="operators">
               <span>Tools for Operators</span>
             </div>
-
-            <article class="card">
-              <h3 class="cardTitle">Labs</h3>
-              <p class="cardBody">
-                Lab environments designed to help operators prepare for Red Hat certification exams.
-              </p>
-              <div class="chips">
-                <span class="chip">labs</span>
-                <span class="chip">experimentation</span>
-                <span class="chip">learning</span>
-              </div>
-              <a class="cardLink" href="https://github.com/Turtini/labs" target="_blank" rel="noopener noreferrer">
-                Repository <span aria-hidden="true">→</span>
-              </a>
-            </article>
-            
-            <article class="card">
-              <h3 class="cardTitle">OpenShift AI Labs</h3>
-              <p class="cardBody">
-                Hands-on labs for OpenShift AI workflows and operational patterns, written for practitioners in regulated and enterprise environments.
-              </p>
-              <div class="chips">
-                <span class="chip">openshift ai</span>
-                <span class="chip">mlops</span>
-                <span class="chip">operators</span>
-                <span class="chip">practitioner labs</span>
-              </div>
-              <a
-                class="cardLink"
-                href="https://github.com/Turtini/openshift-ai"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Repository <span aria-hidden="true">→</span>
-              </a>
-            </article>
-
-            <article class="card">
-              <h3 class="cardTitle">CLI Cheat Sheets</h3>
-              <p class="cardBody">
-                Operator references for Linux fundamentals, OpenShift (<code>oc</code>), VI/VIM, and YAML to quickly refresh your core skills.
-              </p>
-              <div class="chips">
-                <span class="chip">linux</span>
-                <span class="chip">openshift</span>
-                <span class="chip">operator</span>
-                <span class="chip">quick reference</span>
-              </div>
-              <a class="cardLink" href="https://github.com/Turtini/cli-cheat-sheets" target="_blank" rel="noopener noreferrer">
-                Repository <span aria-hidden="true">→</span>
-              </a>
-            </article>
 
             <div class="categoryDivider" id="virtualization">
               <span>Virtualization &amp; Migration</span>
@@ -508,7 +482,7 @@
                 Repository <span aria-hidden="true">→</span>
               </a>
             </article>
-            
+
             <div class="categoryDivider" id="reference">
               <span>Reference Implementations</span>
             </div>
