@@ -10,24 +10,27 @@ This site is where we share what we have learned running it: open-source infrast
 
 ## What You’ll Find Here
 
-This repository is intentionally lightweight. It points to work that lives elsewhere and is maintained in context.
+This repository is the landing page itself. The work it points to lives in its own
+repositories and is maintained there. The page groups it four ways:
 
-### 🔹 Open Source & Community Resources
-- Automation patterns
-- Infrastructure hardening examples
-- Public documentation intended for reuse and learning
+### Governance & Public Sector Security
+- [zero-trust](https://github.com/Turtini/zero-trust) — Zero Trust for regulated environments: identity, segmentation, device posture, visibility
+- [ai](https://github.com/Turtini/ai) — how Turtini oversees and delegates the use of AI systems in human-led operations
+- [github-for-government](https://github.com/Turtini/github-for-government) — using GitHub in government: transparency, auditability, safe participation
+- [public-sector-security](https://github.com/Turtini/public-sector-security) — FedRAMP, authorization boundaries, control inheritance, shared responsibility
 
-### 🔹 Governance & Operating Frameworks
-- AI delegation and usage principles
-- Relationship infrastructure concepts
-- Practical guidance designed for real-world teams
+### Virtualization & Migration
+- [vmware-to-openshift-virtualization](https://github.com/Turtini/vmware-to-openshift-virtualization) — guided migration exercises for VMware practitioners
 
-### 🔹 Red Hat–Aligned Work
-- Ansible and RHEL–focused artifacts
-- OpenShift-adjacent operational thinking
-- Content designed to complement—not replace—official documentation
+### Reference Implementations
+- [turtini.openshift_aws](https://github.com/Turtini/turtini.openshift_aws) — deploying OpenShift on AWS with Ansible
+- [OpenShift](https://github.com/Turtini/OpenShift) — bare-metal UPI installs with ODF, Loki, NetObserv, Grafana, FIPS
 
----
+### Tools for Operators
+- [roles](https://github.com/Turtini/roles) — Ansible roles, Apache-2.0
+- [cli-cheat-sheets](https://github.com/Turtini/cli-cheat-sheets) — OpenShift and Kubernetes-adjacent day-to-day reference
+
+The full list is in the [organization repo index](https://github.com/orgs/Turtini/repositories).
 
 ## Philosophy
 
@@ -56,6 +59,6 @@ Specific projects are linked from their individual repositories.
 
 ## About Turtini
 
-Turtini is a U.S.-based technology partner working across open source ecosystems with an emphasis on long-term operability, trust, and human-centered systems design.
+Turtini is a U.S.-based software company and Red Hat reseller. We build the operations platform at [turtini.com](https://turtini.com) and publish the infrastructure guidance we developed running it in regulated environments.
 
-This site exists to make that work easier to discover and easier to use.
+This site exists to make that guidance easier to discover and easier to use. The platform's source is not published here.
