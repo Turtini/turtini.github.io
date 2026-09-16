@@ -2,9 +2,9 @@
 
 🔗 **Canonical URL:** https://turtini.github.io
 
-**Turtini** is an independent technology partner focused on open source, automation, and operational clarity in complex environments.
+**Turtini** is the OS organizations use to simplify their tech stack — uniting your world by connecting people, places, and things. The platform lives at [turtini.com](https://turtini.com).
 
-This site serves as a public index of Turtini’s open resources, frameworks, and community contributions. It is intended for engineers, operators, and partners looking for practical, reusable approaches rather than prescriptive tooling.
+This site is where we share what we have learned running it: open-source infrastructure guidance for regulated environments. It is intended for engineers, operators, and partners looking for practical, reusable approaches rather than prescriptive tooling.
 
 ---
 

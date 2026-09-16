@@ -24,7 +24,7 @@
     <title>Turtini</title>
     <meta
       name="description"
-      content="Public resources and open-source materials that help teams automate responsibly, understand governance, and operate clearly in complex environments."
+      content="Open-source infrastructure guidance for regulated environments from Turtini &mdash; Zero Trust, FedRAMP, OpenShift, and governance material for the teams who operate it."
     />
 
     <style>
@@ -182,6 +182,16 @@
         font-size: 14px;
         margin: 0;
         max-width: 760px;
+      }
+
+      /* `a { color: inherit }` would render this the same as the muted prose
+         around it, leaving a link nobody can see. Same accent the section
+         paragraphs use, plus an underline -- colour alone should not be what
+         tells someone a thing is clickable. */
+      .sub2 a {
+        color: #f0dcff;
+        text-decoration: underline;
+        text-underline-offset: 2px;
       }
 
       .section {
@@ -354,16 +364,13 @@
   <body>
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="https://turtini.github.io/">
+        <a class="brand" href="https://turtini.com">
           <img src="assets/turtini-white-inline-logo.png" alt="Turtini logo" />
         </a>
 
         <nav class="navlinks" aria-label="Primary">
           <a href="https://turtini.github.io/">Home</a>
           <a href="https://github.com/Turtini" target="_blank" rel="noopener noreferrer">GitHub Org</a>
-          <a href="https://docs.turtini.com" target="_blank" rel="noopener noreferrer">Docs</a>
-          <a href="https://turtini.com" target="_blank" rel="noopener noreferrer">Website</a>
-          <a href="https://trident.turtini.com" target="_blank" rel="noopener noreferrer">Trident</a>
           <a href="https://galaxy.ansible.com/ui/namespaces/turtini/" target="_blank" rel="noopener noreferrer">Ansible Galaxy</a>
         </nav>
       </div>
@@ -379,12 +386,14 @@
           <div>
             <h1>Turtini on GitHub</h1>
             <p class="sub">
-              Public-facing resources, documentation, and open-source artifacts focused on
-              automation, governance, and operational clarity in complex environments.
+              Open-source infrastructure guidance for regulated environments &mdash; automation,
+              governance, and operational clarity, written for the people who run it.
             </p>
             <p class="sub2">
-              Turtini is a U.S.-based Red Hat reseller that works in regulated environments.
-              We publish practical, open-source materials for enterprise teams.
+              Turtini is the OS organizations use to simplify their tech stack, uniting your world
+              by connecting people, places, and things. This is where we share what we have learned
+              running it. The platform itself lives at
+              <a href="https://turtini.com">turtini.com</a>.
             </p>
           </div>
         </section>
